@@ -1,15 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Yeni Gönderi Ekle</title>
-</head>
-<body>
-    <h1>Yeni Blog Gönderisi</h1>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Gönderiyi Kaydet</button>
-    </form>
-    <a href="{% url 'home' %}">← Ana Sayfaya Dön</a>
-</body>
-</html>
+{% extends 'blogapp/base.html' %}
+
+{% block title %}Yeni Gönderi - Creative Blog{% endblock %}
+
+{% block content %}
+<section class="py-5 bg-light">
+    <div class="container">
+        <h2 class="fw-bold">Yeni Gönderi Ekle</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="title" class="form-label">Başlık</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">İçerik</label>
+                <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Gönderiyi Ekle</button>
+        </form>
+        <a href="{% url 'home' %}" class="btn btn-secondary mt-3">Geri Dön</a>
+    </div>
+</section>
+{% endblock %}
