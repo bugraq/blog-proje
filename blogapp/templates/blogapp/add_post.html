@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yeni Gönderi Ekle</title>
+</head>
+<body>
+    <h1>Yeni Blog Gönderisi</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Gönderiyi Kaydet</button>
+    </form>
+    <a href="{% url 'home' %}">← Ana Sayfaya Dön</a>
+</body>
+</html>
